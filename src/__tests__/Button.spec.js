@@ -27,7 +27,6 @@ class Button extends React.Component {
   }
 }
 
-
 describe("Button component", () => {
   // test("Matches the snapshot", () => {
   //   const button = create(<Button />);
@@ -40,5 +39,13 @@ describe("Button component", () => {
     expect(instance.state.text).toBe("");
     instance.handleClick();
     expect(instance.state.text).toBe("PROCEED TO CHECKOUT");
+  });
+
+  test("it shows the expected text when clicked (testing the right way!)", () => {
+    const component = create(<Button text="SUBSCRIBE TO BASIC" />);
+    const instance = component.root;
+    const button = instance.findByType("button");
+    button.props.onClick();
+    expect(button.props.children).toBe("PROCEED TO CHECKOUT");
   });
 });
